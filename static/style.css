@@ -1,0 +1,17 @@
+.fs-4{
+    color:rgb(226, 16, 16);
+}
+
+.nav-link.dropdown-toggle{
+    color:black;
+
+}
+
+.dropdown-item{
+    color:black;
+}
+
+.carousel-item img {
+    max-height: 400px; /* Adjust to desired height */
+    object-fit: cover; /* Keeps the image aspect ratio */
+}
