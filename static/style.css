@@ -17,9 +17,7 @@
 }
 
 
-
-
-#handle-group {
+/* #handle-group {
     transform-origin: top left;
     transition: transform 0.4s ease;
   }
@@ -28,4 +26,26 @@
     transform: rotate(15deg);
     transform: rotate(15deg);
   }
-  
+   */
+
+   svg {
+    width: 500px;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+  }
+
+  #handle {
+    transform-origin: 341px 341px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  svg:hover #handle {
+    animation: rotateHandleReverse 1s ease-in-out forwards;
+  }
+
+  @keyframes rotateHandleReverse {
+    0%   { transform: rotate(0deg); }
+    50%  { transform: rotate(-30deg); }
+    100% { transform: rotate(0deg); }
+  }
