@@ -15,3 +15,17 @@
     max-height: 400px; /* Adjust to desired height */
     object-fit: cover; /* Keeps the image aspect ratio */
 }
+
+
+
+
+#handle-group {
+    transform-origin: top left;
+    transition: transform 0.4s ease;
+  }
+  
+  #door-icon:hover #handle-group {
+    transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  
