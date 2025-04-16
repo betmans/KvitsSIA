@@ -8,168 +8,182 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <!-- Galvene -->
-    <div class="container mt-5">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="{{ url_for('index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"> 
+  <div class="container-fluid mt-0">
+    <header class="py-3 mb-4 border-bottom">
+        <div class="row align-items-center mx-3">
+            <div class="col-auto">
+                <a href="{{ url_for('index') }}" class="d-flex align-items-center link-body-emphasis text-decoration-none"> 
                 <span class="fs-4">KVITS</span>
-            </a>
-            <ul class="nav nav-pills">
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Enģes
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{{ url_for('klasiskas') }}">Klasiskās</a></li>
-                      <li><a class="dropdown-item" href="Enges/vartu.html">Vārtu</a></li>
-                      <li><a class="dropdown-item" href="Enges/metinamas.html">Metināmās</a></li>
-                  </ul>
-              </li>
-          
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Aizbīdņi, Krampīši
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="Aizbidni_krampisi/aizbidni.html">Aizbīdņi</a></li>
-                      <li><a class="dropdown-item" href="Aizbidni_krampisi/krampisi.html">Krampīši</a></li>
-                      <li><a class="dropdown-item" href="Aizbidni_krampisi/piekaramajai_atslegai.html">Piekaramajai atslēgai</a></li>
-                      <li><a class="dropdown-item" href="Aizbidni_krampisi/vartu.html">Vārtu</a></li>
-                  </ul>
-              </li>
+              </a>
+            </div>
+            <div class="col">
+              <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Enģes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('klasiskas') }}">Klasiskās</a></li>
+                        <li><a class="dropdown-item" href="Enges/vartu.html">Vārtu</a></li>
+                        <li><a class="dropdown-item" href="Enges/metinamas.html">Metināmās</a></li>
+                    </ul>
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Aizbīdņi, Krampīši
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="Aizbidni_krampisi/aizbidni.html">Aizbīdņi</a></li>
+                        <li><a class="dropdown-item" href="Aizbidni_krampisi/krampisi.html">Krampīši</a></li>
+                        <li><a class="dropdown-item" href="Aizbidni_krampisi/piekaramajai_atslegai.html">Piekaramajai atslēgai</a></li>
+                        <li><a class="dropdown-item" href="Aizbidni_krampisi/vartu.html">Vārtu</a></li>
+                    </ul>
+                </li>
 
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Slēdzenes
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="Sledzenes/vacu_standarta.html">Vācu standarta</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/euro_standarta.html">Euro standarta</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/skandinavu_standarta.html">Skandināvu standarta</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/rulisu_mehanismi.html">Rulīšu mehānismi</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/starpistabu.html">Starpistabu</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/pretplaksnes.html">Pretplāksnes</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/elbor.html">Elbor</a></li>
-                      <li><a class="dropdown-item" href="Sledzenes/koda.html">Koda</a></li>
-                </ul>
-              </li>
-
-             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-                  <svg
-                  version="1.1"
-                  id="svg1"
-                  width="682.66669"
-                  height="682.66669"
-                  viewBox="0 0 682.66669 682.66669"
-                  sodipodi:docname="rokturisv3.svg"
-                  inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-                  xml:space="preserve"
-                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:svg="http://www.w3.org/2000/svg"><defs
-                    id="defs1" /><sodipodi:namedview
-                    id="namedview1"
-                    pagecolor="#ffffff"
-                    bordercolor="#000000"
-                    borderopacity="0.25"
-                    inkscape:showpageshadow="2"
-                    inkscape:pageopacity="0.0"
-                    inkscape:pagecheckerboard="0"
-                    inkscape:deskcolor="#d1d1d1"
-                    inkscape:zoom="1.1909179"
-                    inkscape:cx="159.12096"
-                    inkscape:cy="341.33334"
-                    inkscape:window-width="1920"
-                    inkscape:window-height="1009"
-                    inkscape:window-x="-8"
-                    inkscape:window-y="-8"
-                    inkscape:window-maximized="1"
-                    inkscape:current-layer="g1" /><g
-                    inkscape:groupmode="layer"
-                    inkscape:label="Image"
-                    id="g1"><g
-                      id="g2"
-                      transform="translate(-397.84398,156.39023)"
-                      inkscape:label="g2"><path
-                        d="m 607.71699,102.4534 c -11.814,-2.2367 -25.804,-9.986205 -35.462,-19.644005 -24.119,-24.119 -27.794,-61.062 -8.9016,-89.4819999 8.8473,-13.3090001 21.039,-22.3290001 38.196,-28.2600001 l 8.8338,-3.0534 h 196 c 163.49,0 197.11001,0.30819 202.67001,1.8581 17.915,4.9932 35.888,18.613 44.433,33.6720001 4.9197,8.6698 9.567,25.3989999 9.567,34.4389999 0,33.862 -25.282,64.682 -57.912,70.597005 -10.17901,1.8454 -387.64001,1.7257 -397.42001,-0.1261 z M 1002.137,74.021395 c 16.388,-4.2684 26.786,-14.828 31.071,-31.553 5.1564,-20.127 -6.2767,-41.68899993 -26.099,-49.2209999 -6.5544,-2.4905 -12.49301,-2.5667 -200.06001,-2.5667 -187.567,0 -193.51,0.0762 -200.06,2.5667 -27.634,10.5 -36.267,45.9509999 -16.536,67.8979999 6.1688,6.8612 11.924,10.283 21.929,13.037 4.6324,1.2753 48.862,1.6723 194.05,1.7418 162.73,0.0779 189.08,-0.17828 195.70001,-1.9022 z"
-                        id="path1-5"
-                        sodipodi:nodetypes="ccsccsccscccccsscccscc" /></g><g
-                      id="g4"
-                      transform="translate(-397.84398,156.39023)"
-                      inkscape:label="g1"><path
-                        style="fill:#000000"
-                        d="m 156.85528,681.76861 c -8.2971,-1.03408 -23.00312,-4.94246 -32.2129,-8.56113 -16.62803,-6.53342 -28.145242,-14.2859 -42.427252,-28.55869 -18.21963,-18.20787 -28.5596,-36.37277 -35.01373,-61.51086 -2.19541,-8.55087 -2.34613,-24.0849 -2.34613,-241.80459 0,-217.82809 0.14981,-233.25025 2.34903,-241.817085 3.46033,-13.4794 9.66914,-28.200711 16.66622,-39.516253 7.9621,-12.876152 27.46996,-32.377284 40.318092,-40.304176 43.68251,-26.9507433 98.51921,-25.7021963 141.09914,3.212611 9.35907,6.35548 27.16083,24.640765 33.39131,34.29828 8.01809,12.428396 7.2859,21.852857 -2.06946,26.637228 -7.26293,3.7143 -14.05549,0.48346 -21.01244,-9.994458 C 239.81622,50.081663 216.30072,34.787281 188.01318,29.893133 143.3125,22.159279 97.999378,47.4228 80.295618,89.949135 c -8.50124,20.420905 -8.20901,10.751435 -7.76153,256.814915 0.3736,205.43703 0.58721,223.8996 2.6791,231.5593 10.02987,36.72552 38.083582,64.49329 74.002122,73.24786 12.85523,3.13326 35.42304,2.82015 48.51212,-0.67306 34.63124,-9.24238 61.74403,-36.79635 71.41276,-72.5748 2.01864,-7.46985 2.32444,-22.56225 2.98219,-147.1841 0.70319,-133.23261 0.83401,-138.97247 3.22746,-141.61648 4.08853,-4.51655 10.46797,-5.99203 15.96921,-3.69347 9.54266,3.98718 8.99588,-5.53734 8.56417,149.18419 l -0.38781,138.98653 -3.56379,12.94948 c -13.92082,50.58321 -54.37324,86.56485 -105.99841,94.28354 -9.1267,1.36457 -24.4373,1.61246 -33.07793,0.53557 z m 11.76918,-113.37925 c -4.16501,-0.78765 -9.3077,-6.41524 -10.27297,-11.24162 -0.45625,-2.28125 -0.82955,-13.95732 -0.82955,-25.94682 v -21.79909 l -4.33333,-2.21693 c -8.84086,-4.52297 -14.2426,-10.00667 -18.62013,-18.90267 -3.86658,-7.85765 -4.37479,-10.15364 -4.33651,-19.59149 0.0388,-9.5603 0.52048,-11.57913 4.55562,-19.09258 5.0279,-9.36198 9.21921,-13.41008 19.25776,-18.59975 5.64247,-2.91701 8.64269,-3.53294 17.50065,-3.59281 9.46973,-0.064 11.7073,0.42798 19.59149,4.30762 14.99888,7.38062 22.98241,20.43056 23.01479,37.62013 0.0151,8.01933 -0.67129,11.47532 -3.4655,17.44864 -4.00237,8.55606 -10.94084,16.02923 -18.42935,19.84958 l -5.19369,2.64963 -0.43757,25.02607 c -0.33356,19.07812 -0.89794,25.71994 -2.37462,27.94549 -3.01805,4.54859 -9.84603,7.22987 -15.62709,6.1366 z m 13.29775,-89.15325 c 7.19452,-7.19452 5.18658,-18.24716 -4.11703,-22.66201 -4.31273,-2.04653 -5.43482,-2.09439 -10.2303,-0.43637 -10.0761,3.48377 -12.73568,15.48257 -5.11987,23.09838 4.88233,4.88233 14.58487,4.88233 19.4672,0 z"
-                        id="path1"
-                        sodipodi:nodetypes="ssssssssssssssssssssssscsssssscsssssssssscssssssss"
-                        transform="translate(397.84398,-156.39023)" /></g></g></svg>
-                   <style>
-
-                     </style>
-                    Durvju rokturi
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="Durvju_rokturi/dalitajam_uzlikam.html">Dalītajām uzlikām</a></li>
-                    <li><a class="dropdown-item" href="Durvju_rokturi/garajam_uzlikam.html">Garajām uzlikām</a></li>  
-                    <li><a class="dropdown-item" href="Durvju_rokturi/skandinavu_standarta.html">Skandināvu standarta</a></li> 
-                    <li><a class="dropdown-item" href="Durvju_rokturi/parejie_rokturi.html">Pārējie rokturi</a></li>
-                    <!-- <li><a class="dropdown-item" href="#">Lokveida</a></li>
-                    <li><a class="dropdown-item" href="#">Centra</a></li>
-                    <li><a class="dropdown-item" href="#">Lūkas</a></li>
-                    <li><a class="dropdown-item" href="#">Sēnītes</a></li> -->
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Cilindri, Aizgriežņi
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="Cilindri_aizgriezni/cilindri.html">Cilindri</a></li>
-                      <li><a class="dropdown-item" href="Cilindri_aizgriezni/aizgriezni.html">Aizgriežņi</a></li>
-                      <li><a class="dropdown-item" href="Cilindri_aizgriezni/uzlikas.html">Uzlikas</a></li>
-                      <li><a class="dropdown-item" href="Cilindri_aizgriezni/nosegplaksnes.html">Nosegplāksnes</a></li>
-                      
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Slēdzenes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="Sledzenes/vacu_standarta.html">Vācu standarta</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/euro_standarta.html">Euro standarta</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/skandinavu_standarta.html">Skandināvu standarta</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/rulisu_mehanismi.html">Rulīšu mehānismi</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/starpistabu.html">Starpistabu</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/pretplaksnes.html">Pretplāksnes</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/elbor.html">Elbor</a></li>
+                        <li><a class="dropdown-item" href="Sledzenes/koda.html">Koda</a></li>
                   </ul>
                 </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Mēbeļu furnitūra
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="Mebelu_furnitura/sledzenes.html">Slēdzenes</a></li>
-                    <li><a class="dropdown-item" href="Mebelu_furnitura/enģes.html">Eņģes</a></li>
-                    <li><a class="dropdown-item" href="Mebelu_furnitura/enģes.html">Magnēti</a></li>
-                    <li><a class="dropdown-item" href="Mebelu_furnitura/lodites.html">Lodītes</a></li>
-                </ul>
-              </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Cita furnitūra
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="Cita_furnitūra/pakaramie.html">Pakaramie</a></li>
-                    <li><a class="dropdown-item" href="Cita_furnitūra/paslimejosies_nummurini.html">Pašlīmējošie nummuriņi</a></li>
-                    <li><a class="dropdown-item" href="Cita_furnitūra/atdures.html">Atdures</a></li>
-                    <li><a class="dropdown-item" href="Cita_furnitūra/aizvereji.html">Aizvērēji</a></li>
-                </ul>
-              </li>
+                    <!-- <svg
+                    version="1.1"
+                    id="svg1"
+                    width="682.66669"
+                    height="682.66669"
+                    viewBox="0 0 682.66669 682.66669"
+                    sodipodi:docname="rokturisv3.svg"
+                    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+                    xml:space="preserve"
+                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:svg="http://www.w3.org/2000/svg"><defs
+                      id="defs1" /><sodipodi:namedview
+                      id="namedview1"
+                      pagecolor="#ffffff"
+                      bordercolor="#000000"
+                      borderopacity="0.25"
+                      inkscape:showpageshadow="2"
+                      inkscape:pageopacity="0.0"
+                      inkscape:pagecheckerboard="0"
+                      inkscape:deskcolor="#d1d1d1"
+                      inkscape:zoom="1.1909179"
+                      inkscape:cx="159.12096"
+                      inkscape:cy="341.33334"
+                      inkscape:window-width="1920"
+                      inkscape:window-height="1009"
+                      inkscape:window-x="-8"
+                      inkscape:window-y="-8"
+                      inkscape:window-maximized="1"
+                      inkscape:current-layer="g1" /><g
+                      inkscape:groupmode="layer"
+                      inkscape:label="Image"
+                      id="g1"><g
+                        id="g2"
+                        transform="translate(-397.84398,156.39023)"
+                        inkscape:label="g2"><path
+                          d="m 607.71699,102.4534 c -11.814,-2.2367 -25.804,-9.986205 -35.462,-19.644005 -24.119,-24.119 -27.794,-61.062 -8.9016,-89.4819999 8.8473,-13.3090001 21.039,-22.3290001 38.196,-28.2600001 l 8.8338,-3.0534 h 196 c 163.49,0 197.11001,0.30819 202.67001,1.8581 17.915,4.9932 35.888,18.613 44.433,33.6720001 4.9197,8.6698 9.567,25.3989999 9.567,34.4389999 0,33.862 -25.282,64.682 -57.912,70.597005 -10.17901,1.8454 -387.64001,1.7257 -397.42001,-0.1261 z M 1002.137,74.021395 c 16.388,-4.2684 26.786,-14.828 31.071,-31.553 5.1564,-20.127 -6.2767,-41.68899993 -26.099,-49.2209999 -6.5544,-2.4905 -12.49301,-2.5667 -200.06001,-2.5667 -187.567,0 -193.51,0.0762 -200.06,2.5667 -27.634,10.5 -36.267,45.9509999 -16.536,67.8979999 6.1688,6.8612 11.924,10.283 21.929,13.037 4.6324,1.2753 48.862,1.6723 194.05,1.7418 162.73,0.0779 189.08,-0.17828 195.70001,-1.9022 z"
+                          id="path1-5"
+                          sodipodi:nodetypes="ccsccsccscccccsscccscc" /></g><g
+                        id="g4"
+                        transform="translate(-397.84398,156.39023)"
+                        inkscape:label="g1"><path
+                          style="fill:#000000"
+                          d="m 156.85528,681.76861 c -8.2971,-1.03408 -23.00312,-4.94246 -32.2129,-8.56113 -16.62803,-6.53342 -28.145242,-14.2859 -42.427252,-28.55869 -18.21963,-18.20787 -28.5596,-36.37277 -35.01373,-61.51086 -2.19541,-8.55087 -2.34613,-24.0849 -2.34613,-241.80459 0,-217.82809 0.14981,-233.25025 2.34903,-241.817085 3.46033,-13.4794 9.66914,-28.200711 16.66622,-39.516253 7.9621,-12.876152 27.46996,-32.377284 40.318092,-40.304176 43.68251,-26.9507433 98.51921,-25.7021963 141.09914,3.212611 9.35907,6.35548 27.16083,24.640765 33.39131,34.29828 8.01809,12.428396 7.2859,21.852857 -2.06946,26.637228 -7.26293,3.7143 -14.05549,0.48346 -21.01244,-9.994458 C 239.81622,50.081663 216.30072,34.787281 188.01318,29.893133 143.3125,22.159279 97.999378,47.4228 80.295618,89.949135 c -8.50124,20.420905 -8.20901,10.751435 -7.76153,256.814915 0.3736,205.43703 0.58721,223.8996 2.6791,231.5593 10.02987,36.72552 38.083582,64.49329 74.002122,73.24786 12.85523,3.13326 35.42304,2.82015 48.51212,-0.67306 34.63124,-9.24238 61.74403,-36.79635 71.41276,-72.5748 2.01864,-7.46985 2.32444,-22.56225 2.98219,-147.1841 0.70319,-133.23261 0.83401,-138.97247 3.22746,-141.61648 4.08853,-4.51655 10.46797,-5.99203 15.96921,-3.69347 9.54266,3.98718 8.99588,-5.53734 8.56417,149.18419 l -0.38781,138.98653 -3.56379,12.94948 c -13.92082,50.58321 -54.37324,86.56485 -105.99841,94.28354 -9.1267,1.36457 -24.4373,1.61246 -33.07793,0.53557 z m 11.76918,-113.37925 c -4.16501,-0.78765 -9.3077,-6.41524 -10.27297,-11.24162 -0.45625,-2.28125 -0.82955,-13.95732 -0.82955,-25.94682 v -21.79909 l -4.33333,-2.21693 c -8.84086,-4.52297 -14.2426,-10.00667 -18.62013,-18.90267 -3.86658,-7.85765 -4.37479,-10.15364 -4.33651,-19.59149 0.0388,-9.5603 0.52048,-11.57913 4.55562,-19.09258 5.0279,-9.36198 9.21921,-13.41008 19.25776,-18.59975 5.64247,-2.91701 8.64269,-3.53294 17.50065,-3.59281 9.46973,-0.064 11.7073,0.42798 19.59149,4.30762 14.99888,7.38062 22.98241,20.43056 23.01479,37.62013 0.0151,8.01933 -0.67129,11.47532 -3.4655,17.44864 -4.00237,8.55606 -10.94084,16.02923 -18.42935,19.84958 l -5.19369,2.64963 -0.43757,25.02607 c -0.33356,19.07812 -0.89794,25.71994 -2.37462,27.94549 -3.01805,4.54859 -9.84603,7.22987 -15.62709,6.1366 z m 13.29775,-89.15325 c 7.19452,-7.19452 5.18658,-18.24716 -4.11703,-22.66201 -4.31273,-2.04653 -5.43482,-2.09439 -10.2303,-0.43637 -10.0761,3.48377 -12.73568,15.48257 -5.11987,23.09838 4.88233,4.88233 14.58487,4.88233 19.4672,0 z"
+                          id="path1"
+                          sodipodi:nodetypes="ssssssssssssssssssssssscsssssscsssssssssscssssssss"
+                          transform="translate(397.84398,-156.39023)" /></g></g></svg> -->
+                      Durvju rokturi
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Durvju_rokturi/dalitajam_uzlikam.html">Dalītajām uzlikām</a></li>
+                      <li><a class="dropdown-item" href="Durvju_rokturi/garajam_uzlikam.html">Garajām uzlikām</a></li>  
+                      <li><a class="dropdown-item" href="Durvju_rokturi/skandinavu_standarta.html">Skandināvu standarta</a></li> 
+                      <li><a class="dropdown-item" href="Durvju_rokturi/parejie_rokturi.html">Pārējie rokturi</a></li>
+                      <!-- <li><a class="dropdown-item" href="#">Lokveida</a></li>
+                      <li><a class="dropdown-item" href="#">Centra</a></li>
+                      <li><a class="dropdown-item" href="#">Lūkas</a></li>
+                      <li><a class="dropdown-item" href="#">Sēnītes</a></li> -->
+                  </ul>
+                </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Stiprinājumi
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="Stiprinajumi/plauktu_lenki.html">Plauktu leņķi</a></li>
-                    <li><a class="dropdown-item" href="Stiprinajumi/margu_balsti.html">Margu balsti</a></li>
-                </ul>
-              </li> 
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cilindri, Aizgriežņi
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="Cilindri_aizgriezni/cilindri.html">Cilindri</a></li>
+                        <li><a class="dropdown-item" href="Cilindri_aizgriezni/aizgriezni.html">Aizgriežņi</a></li>
+                        <li><a class="dropdown-item" href="Cilindri_aizgriezni/uzlikas.html">Uzlikas</a></li>
+                        <li><a class="dropdown-item" href="Cilindri_aizgriezni/nosegplaksnes.html">Nosegplāksnes</a></li>
+                        
+                    </ul>
+                  </li>
 
-            </ul>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Mēbeļu furnitūra
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Mebelu_furnitura/sledzenes.html">Slēdzenes</a></li>
+                      <li><a class="dropdown-item" href="Mebelu_furnitura/enģes.html">Eņģes</a></li>
+                      <li><a class="dropdown-item" href="Mebelu_furnitura/enģes.html">Magnēti</a></li>
+                      <li><a class="dropdown-item" href="Mebelu_furnitura/lodites.html">Lodītes</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Cita furnitūra
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Cita_furnitūra/pakaramie.html">Pakaramie</a></li>
+                      <li><a class="dropdown-item" href="Cita_furnitūra/paslimejosies_nummurini.html">Pašlīmējošie nummuriņi</a></li>
+                      <li><a class="dropdown-item" href="Cita_furnitūra/atdures.html">Atdures</a></li>
+                      <li><a class="dropdown-item" href="Cita_furnitūra/aizvereji.html">Aizvērēji</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Stiprinājumi
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Stiprinajumi/plauktu_lenki.html">Plauktu leņķi</a></li>
+                      <li><a class="dropdown-item" href="Stiprinajumi/margu_balsti.html">Margu balsti</a></li>
+                  </ul>
+                </li> 
+
+              </ul>
+            </div>
+            <div class="col">
+              <a href="/docs/5.3/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
+                <svg class="bi me-2" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
+                Read the docs
+              </a>
+                <a href="/grozs" class="btn btn-primary">Grozs</a>
+                <form class="d-flex ms-2">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </header>
     </div>
 </div>
