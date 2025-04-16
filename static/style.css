@@ -17,35 +17,15 @@
 }
 
 
-/* #handle-group {
-    transform-origin: top left;
-    transition: transform 0.4s ease;
-  }
-  
-  #door-icon:hover #handle-group {
-    transform: rotate(15deg);
-    transform: rotate(15deg);
-  }
-   */
-
-   svg {
-    width: 500px;
-    height: auto;
-    display: block;
-    margin: 2rem auto;
-  }
-
-  #handle {
-    transform-origin: 341px 341px;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  svg:hover #handle {
+svg:hover #g2 {
     animation: rotateHandleReverse 1s ease-in-out forwards;
-  }
+    }
 
-  @keyframes rotateHandleReverse {
-    0%   { transform: rotate(0deg); }
-    50%  { transform: rotate(-30deg); }
-    100% { transform: rotate(0deg); }
-  }
+    @keyframes hinge {
+    0% {
+        transform: translate(-397.84398px, 156.39023px) rotate(0deg);
+    }
+    100% {
+        transform: translate(-397.84398px, 156.39023px) rotate(30deg);
+    }
+    }
