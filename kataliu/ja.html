@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Katalogs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product-tile {
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-tile img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .product-tile h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1em;
+    }
+
+    .product-tile p {
+      margin: 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Produkt Katalogs</h1>
+
+  <div class="grid">
+
+    <div class="product-tile">
+      <img src="../static/images/image_row_2.png" alt="Product 1">
+      <h3>Apraksts 1</h3>
+      <p>10.99 €</p>
+    </div>
+
+    <div class="product-tile">
+      <img src="/images/image_row_3.png" alt="Product 2">
+      <h3>Apraksts 2</h3>
+      <p>7.50 €</p>
+    </div>
+
+    <div class="product-tile">
+      <img src="/images/image_row_4.png" alt="Product 3">
+      <h3>Apraksts 3</h3>
+      <p>3.49 €</p>
+    </div>
+
+    <!-- Add more products below -->
+
+  </div>
+
+</body>
+</html>
