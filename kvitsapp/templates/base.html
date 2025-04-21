@@ -11,6 +11,10 @@
 </head>
 <body>
 
+  <!-- <svg width="16" height="16" class="me-1">
+    <use xlink:href="{% static 'icons/sprite.svg' %}#cart"></use>
+</svg> -->
+
   <div class="container-fluid mt-0">
     <header class="py-3 mb-4 border-bottom">
         <div class="row align-items-center mx-3">
@@ -19,14 +23,14 @@
                 <span class="fs-4">LOGO</span>
               </a>
             </div>
-            <div class="col">
+            <div class="col-8">
               <ul class="nav nav-pills justify-content-end">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Enģes
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'kvitsapp:klasiskas' %}">Klasiskās</a></li>
+                        <li><a class="dropdown-item" href="{% url 'kvitsapp:parastas' %}">Klasiskās</a></li>
                         <li><a class="dropdown-item" href="{% url 'kvitsapp:vartu' %}">Vārtu</a></li>
                         <li><a class="dropdown-item" href="{% url 'kvitsapp:metinamas' %}">Metināmās</a></li>
                     </ul>
@@ -38,8 +42,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'kvitsapp:aizbidni' %}">Aizbīdņi</a></li>
-                        <li><a class="dropdown-item" href="{% url 'kvitsapp:krampisi' %}">Krampīši</a></li>
-                        <li><a class="dropdown-item" href="{% url 'kvitsapp:piekaramajai_atslegai' %}">Piekaramajai atslēgai</a></li>
+                        <li><a class="dropdown-item" href="{% url 'kvitsapp:krampji' %}">Krampīši</a></li>
+                        <li><a class="dropdown-item" href="{% url 'kvitsapp:kronsteini' %}">Piekaramajai atslēgai</a></li>
                         <li><a class="dropdown-item" href="{% url 'kvitsapp:vartu' %}">Vārtu</a></li>
                     </ul>
                 </li>
@@ -124,10 +128,6 @@
               </ul>
             </div>
             <div class="col">
-              <a href="/docs/5.3/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
-                <svg class="bi me-2" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
-                Read the docs
-              </a>
                 <a href="/grozs" class="btn btn-primary">Grozs</a>
                 <form class="d-flex ms-2">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -29,17 +29,21 @@
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # .devcontainer/Dockerfile
-# Base image
 FROM python:3.11-slim
+
+# Install necessary packages to manage users
+RUN apt-get update && apt-get install -y --no-install-recommends shadow
+
+# Add the vscode user with a specific UID (1000 is common) and group
+RUN groupadd --gid 1000 vscode
+RUN useradd --uid 1000 --gid vscode --shell /bin/bash --create-home vscode
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install dependencies
-RUN apt-get update \
-  && apt-get install -y build-essential libpq-dev curl git \
-  && apt-get clean
+RUN apt-get install -y build-essential libpq-dev curl git --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 # Create app directory
 WORKDIR /workspace
@@ -47,6 +51,9 @@ WORKDIR /workspace
 # Install pipenv or use requirements.txt
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Switch to the vscode user for subsequent commands (optional, but good practice)
+USER vscode
 
 
 
