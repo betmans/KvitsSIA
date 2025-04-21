@@ -1,7 +1,0 @@
-Django==5.2
-django-browser-reload==1.18.0
-et_xmlfile==2.0.0
-Jinja2==3.1.6
-openpyxl==3.1.5
-psycopg2-binary==2.9.6
-requests==2.31.0         # For making HTTP requests
