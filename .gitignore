@@ -13,7 +13,7 @@ env/
 
 # IDEs
 .idea/
-.vscode/
+.vscode
 
 # Python-related
 *.pyc

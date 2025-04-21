@@ -41,7 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends adduser
 # Add the vscode group with a specific GID (1000 is common)
 RUN groupadd --gid 1000 vscode
 
-# Add the vscode user with a specific UID (1000 is common) and the GID of the vscode group
+# Add the vscode user with a specific UID (1000 is common) and the GID of the vscode group (using the numerical ID)
 RUN adduser --uid 1000 --gid 1000 --shell /bin/bash --home /home/vscode vscode
 
 # Set the working directory
