@@ -22,3 +22,4 @@ if __name__ == '__main__':
     main()
 #cd framework
 #python manage.py runserver
+#http://localhost:8000/

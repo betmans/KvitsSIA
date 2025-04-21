@@ -1,8 +1,8 @@
 {
     "name": "Django + PostgreSQL",
-    // "dockerComposeFile": [
-    //   "docker-compose.yml"
-    // ],
+    "dockerComposeFile": [
+      "docker-compose.yml"
+    ],
     "service": "web",
     "workspaceFolder": "/workspace",
     "settings": {
@@ -15,4 +15,3 @@
     "postCreateCommand": "pip install -r requirements.txt",
     "remoteUser": "vscode"
   }
-  
