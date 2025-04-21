@@ -1,29 +1,56 @@
+# services:
+#   web:
+#     build: .
+#     command: python manage.py runserver 0.0.0.0:8000
+#     volumes:
+#       - .:/app
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+#     environment:
+#       - DATABASE_NAME=postgres
+#       - DATABASE_USER=postgres
+#       - DATABASE_PASSWORD=postgres
+#       - DATABASE_HOST=db
+#       - DATABASE_PORT=5432
+
+#   db:
+#     image: postgres:16
+#     restart: always
+#     environment:
+#       POSTGRES_DB: postgres
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+
+# volumes:
+#   postgres_data:
+
+version: '3.8'
+
 services:
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - ..:/workspace:cached
     depends_on:
       - db
-    environment:
-      - DATABASE_NAME=postgres
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=postgres
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
 
   db:
     image: postgres:16
     restart: always
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: kvits_db
+      POSTGRES_USER: kvits_user
+      POSTGRES_PASSWORD: kvits_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
