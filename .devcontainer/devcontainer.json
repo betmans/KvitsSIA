@@ -13,5 +13,7 @@
       "ms-python.vscode-pylance"
     ],
     "postCreateCommand": "pip install -r requirements.txt",
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "postStartCommand": "sudo chown -R vscode:vscode /workspace"
+
   }

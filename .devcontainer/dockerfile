@@ -39,12 +39,8 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends adduser
 
 # Add the vscode group with a specific GID (1000 is common)
-RUN groupadd --gid 1000 vscode
-
-# Add the vscode user with a specific UID (1000 is common) and the GID of the vscode group (using the numerical ID)
-# Only create user if not exists, and fix permissions
 RUN if ! id -u vscode >/dev/null 2>&1; then \
-    adduser --disabled-password --gecos "" --uid 1000 --shell /bin/bash --home /home/vscode vscode; \
+    adduser --disabled-password --gecos "" --uid 1000 --shell /bin/bash --home /home/vscode --ingroup vscode vscode; \
 fi && \
 mkdir -p /workspace && chown -R vscode:vscode /workspace
 # Set the working directory
