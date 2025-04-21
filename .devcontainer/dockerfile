@@ -42,11 +42,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends adduser
 RUN groupadd --gid 1000 vscode
 
 # Add the vscode user with a specific UID (1000 is common) and the GID of the vscode group (using the numerical ID)
-RUN id -u vscode >/dev/null 2>&1 || ( \
-    groupadd --gid 1000 vscode && \
-    adduser --disabled-password --gecos "" --uid 1000 --gid 1000 --shell /bin/bash --home /home/vscode vscode ) && \
-    mkdir -p /workspace && \
-    chown -R vscode:vscode /workspace
+# Only create user if not exists, and fix permissions
+RUN if ! id -u vscode >/dev/null 2>&1; then \
+    adduser --disabled-password --gecos "" --uid 1000 --shell /bin/bash --home /home/vscode vscode; \
+fi && \
+mkdir -p /workspace && chown -R vscode:vscode /workspace
 # Set the working directory
 WORKDIR /workspace
 
