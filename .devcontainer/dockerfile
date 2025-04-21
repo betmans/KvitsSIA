@@ -36,11 +36,11 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install necessary packages to manage users
-RUN apt-get update && apt-get install -y --no-install-recommends shadow
+RUN apt-get update && apt-get install -y --no-install-recommends adduser
 
 # Add the vscode user with a specific UID (1000 is common) and group
 RUN groupadd --gid 1000 vscode
-RUN useradd --uid 1000 --gid vscode --shell /bin/bash --create-home vscode
+RUN adduser --uid 1000 --gid vscode --shell /bin/bash --home /home/vscode vscode
 
 # Set the working directory
 WORKDIR /workspace
@@ -54,7 +54,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Switch to the vscode user for subsequent commands (optional, but good practice)
 USER vscode
-
 
 
 
