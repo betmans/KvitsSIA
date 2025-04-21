@@ -1,17 +1,18 @@
 {
-    "name": "Django Dev",
-    "dockerComposeFile": "docker-compose.yml",
+    "name": "Django + PostgreSQL",
+    "dockerComposeFile": [
+      "docker-compose.yml"
+    ],
     "service": "web",
-    "workspaceFolder": "/app",
+    "workspaceFolder": "/workspace",
     "settings": {
       "terminal.integrated.defaultProfile.linux": "bash"
     },
     "extensions": [
       "ms-python.python",
-      "ms-azuretools.vscode-docker"
+      "ms-python.vscode-pylance"
     ],
-    "postCreateCommand": "pip install -r requirements.txt && python manage.py migrate",
-    "forwardPorts": [8000],
-    "remoteUser": "root"
-}
+    "postCreateCommand": "pip install -r requirements.txt",
+    "remoteUser": "vscode"
+  }
   

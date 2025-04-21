@@ -30,27 +30,30 @@
 # volumes:
 #   postgres_data:
 
-version: '3.8'
-
+version: "3.9"
 services:
   web:
     build:
-      context: ..
+      context: .
       dockerfile: .devcontainer/Dockerfile
-    ports:
-      - "8000:8000"
     volumes:
       - ..:/workspace:cached
+    ports:
+      - 8000:8000
     depends_on:
       - db
+    environment:
+      - DEBUG=1
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+      - DATABASE_URL=postgres://kvits_user:kvits_password@db:5432/kvits_db
 
   db:
     image: postgres:16
     restart: always
     environment:
-      POSTGRES_DB: kvits_db
       POSTGRES_USER: kvits_user
       POSTGRES_PASSWORD: kvits_password
+      POSTGRES_DB: kvits_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
