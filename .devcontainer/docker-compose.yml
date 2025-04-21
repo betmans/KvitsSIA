@@ -35,7 +35,7 @@ services:
   web:
     build:
       context: ..
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: .devcontainer/dockerfile
     volumes:
       - ..:/workspace:cached
     ports:
