@@ -30,7 +30,31 @@
 
 # .devcontainer/Dockerfile
 FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install minimal required packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /workspace
+
+# Create vscode user with correct permissions
+RUN useradd -m -s /bin/bash -u 1000 vscode && \
+    chown -R vscode:vscode /workspace && \
+    chmod -R 775 /workspace
+
+# Switch to vscode user
+USER vscode
+
+# Copy requirements and install dependencies
+COPY --chown=vscode:vscode requirements.txt .
+RUN pip install --user --upgrade pip && pip install --user -r requirements.txt
 
 
 

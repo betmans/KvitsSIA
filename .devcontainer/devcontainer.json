@@ -1,6 +1,10 @@
 {
   "name": "Django + PostgreSQL",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
   "service": "web",
-  "workspaceFolder": "/workspace"
+  "workspaceFolder": "/workspace",
+  "remoteUser": "vscode",
+  "postCreateCommand": "sudo chown -R vscode:vscode /workspace && sudo chmod -R 775 /workspace"
 }

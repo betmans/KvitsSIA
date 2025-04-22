@@ -33,14 +33,14 @@
 version: "3.9"
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: .devcontainer/dockerfile
     volumes:
-      - ..:/workspace
-    command: sleep infinity
-  
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_USER: kvits_user
-      POSTGRES_PASSWORD: kvits_password
-      POSTGRES_DB: kvits_db
+      - .:/workspace:cached
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    # Add this to ensure the container runs with the right user
+    user: vscode
