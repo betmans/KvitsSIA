@@ -8,6 +8,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/product_tiles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -128,11 +131,19 @@
               </ul>
             </div>
             <div class="col">
-                <a href="/grozs" class="btn btn-primary">Grozs</a>
+                <!-- <a href="/grozs" class="btn btn-primary">Grozs</a>
                 <form class="d-flex ms-2">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
+                </form> -->
+                <form class="search-wrapper" action="/search" method="GET">
+                  <input type="text" name="q" placeholder="Meklēt">
+                  <button type="submit">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M10 2a8 8 0 015.292 13.708l4.707 4.707-1.414 1.414-4.707-4.707A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+                      </svg>
+                  </button>
+              </form>
               </div>
             </div>
           </div>
@@ -142,7 +153,7 @@
 {% block body %}{% endblock %}
 <!-- Kājene -->
 <div class="container">
-    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-0 border-top">
       <div class="col mb-3">
         <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>

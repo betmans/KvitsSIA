@@ -74,23 +74,23 @@ WSGI_APPLICATION = 'kvits.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 import os
-import dj_database_url
-database_url = os.environ.get('DATABASE_URL')
-if database_url:
-    DATABASES = {
-        'default': dj_database_url.parse(database_url)
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DATABASE_NAME', 'postgres'),
-            'USER': os.environ.get('DATABASE_USER', 'postgres'),
-            'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
-            'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
-            'PORT': os.environ.get('DATABASE_PORT', '5432'),
-        }
-    }
+# import dj_database_url
+# database_url = os.environ.get('DATABASE_URL')
+# if database_url:
+#     DATABASES = {
+#         'default': dj_database_url.parse(database_url)
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': os.environ.get('DATABASE_NAME', 'postgres'),
+#             'USER': os.environ.get('DATABASE_USER', 'postgres'),
+#             'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
+#             'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
+#             'PORT': os.environ.get('DATABASE_PORT', '5432'),
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

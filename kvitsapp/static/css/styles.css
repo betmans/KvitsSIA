@@ -1,11 +1,12 @@
 body {
     color: white;
-    font-family: sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 footer {
     background-color: #9B2915;
     color: white;
+    --bs-secondary-color: white;
     font-family: sans-serif;
 }
 
@@ -13,7 +14,51 @@ footer {
     background-color: #9B2915;
 }
 
-  
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    min-width: 50px;
+    max-width: 400px;
+}
+.search-wrapper input {
+    padding: 10px 15px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+    outline: none;
+}
+.search-wrapper button {
+    background: #ececec;
+    border: 2px solid #ccc;
+    padding: 12px 15px;
+    border-radius: 0 10px 10px 0;
+    border-left: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+.search-wrapper button svg {
+    width: 20px;
+    height: 20px;
+    fill: rgb(0, 0, 0);
+}
+.search-wrapper button:hover {
+    background: #bebebe;
+}
 
 /* .fs-4{
     color:rgb(226, 16, 16);
