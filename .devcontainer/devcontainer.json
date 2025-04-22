@@ -1,10 +1,27 @@
 {
-  "name": "Django + PostgreSQL",
-  "dockerComposeFile": [
-    "docker-compose.yml"
-  ],
-  "service": "web",
-  "workspaceFolder": "/workspace",
-  "remoteUser": "vscode",
-  "postCreateCommand": "sudo chown -R vscode:vscode /workspace && sudo chmod -R 775 /workspace"
+  "name": "Django Development",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/postgres:1": {
+      "version": "16"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "batisteo.vscode-django"
+      ],
+      "settings": {
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "forwardPorts": [8000, 5432],
+  "postCreateCommand": "pip install -r requirements.txt",
+  "remoteUser": "vscode"
 }
