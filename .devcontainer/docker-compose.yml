@@ -33,29 +33,14 @@
 version: "3.9"
 services:
   web:
-    build:
-      context: .
-      dockerfile: .devcontainer/dockerfile
+    build: .
     volumes:
-      - .:/workspace:cached
-    ports:
-      - 8000:8000
-    depends_on:
-      - db
-    environment:
-      - DEBUG=1
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
-      - DATABASE_URL=postgres://kvits_user:kvits_password@db:5432/kvits_db
-
+      - ..:/workspace
+    command: sleep infinity
+  
   db:
     image: postgres:16
-    restart: always
     environment:
       POSTGRES_USER: kvits_user
       POSTGRES_PASSWORD: kvits_password
       POSTGRES_DB: kvits_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:

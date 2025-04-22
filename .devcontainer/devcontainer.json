@@ -1,16 +1,6 @@
 {
   "name": "Django + PostgreSQL",
-  "dockerComposeFile": [
-    "docker-compose.yml"
-  ],
+  "dockerComposeFile": "docker-compose.yml",
   "service": "web",
-  "workspaceFolder": "/workspace",
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
-  },
-  "extensions": [
-    "ms-python.python",
-    "ms-python.vscode-pylance"
-  ],
-  "remoteUser": "vscode"
+  "workspaceFolder": "/workspace"
 }
