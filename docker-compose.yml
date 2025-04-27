@@ -30,17 +30,75 @@
 # volumes:
 #   postgres_data:
 
-version: "3.9"
+# version: "3.9"
+# services:
+#   web:
+#     build:
+#       context: .
+#       dockerfile: .devcontainer/dockerfile
+#     volumes:
+#       - .:/workspace:cached
+#     ports:
+#       - 8000:8000
+#     depends_on:
+#       - db
+#     # Add this to ensure the container runs with the right user
+#     user: vscode
+
+
+
 services:
   web:
-    build:
-      context: .
-      dockerfile: .devcontainer/dockerfile
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/workspace:cached
+      - .:/app
     ports:
-      - 8000:8000
+      - "8000:8000"
     depends_on:
       - db
-    # Add this to ensure the container runs with the right user
-    user: vscode
+    environment:
+      - DATABASE_NAME=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
+
+  # docker-compose down
+# docker-compose up --build
+
+#docker-compose restart
+
+# # Stop everything
+# docker-compose down -v
+
+# # Clean Docker system
+# docker system prune -a --volumes
+
+# # Rebuild and start
+# docker-compose up --build -d
+
+# # Run migrations
+# docker-compose exec web python manage.py migrate
+
+# # Create superuser
+# docker-compose exec web python manage.py createsuperuser
+
+# # Import products
+# docker-compose exec web python manage.py import_products
