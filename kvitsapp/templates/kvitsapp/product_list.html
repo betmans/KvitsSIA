@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %} {# Load crispy if needed for the form #}
+
+{% block title %}{{ category.name|default:"Produkti" }}{% endblock %} {# Products #}
+
+{% block body %}
+<div class="container mt-4" style="color: black;">
+    <h2 class="mb-4">{{ category.name|default:"Visi Produkti" }}</h2> {# All Products #}
+
+    {% if query %}
+        <p class="lead">Meklēšanas rezultāti vaicājumam: "{{ query }}"</p> {# Search results for query #}
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                 {# Product Image #}
+                <div class="text-center p-3" style="height: 200px;"> {# Fixed height container #}
+                    {% if product.attels %}
+                        <img src="{% static product.attels %}" class="card-img-top" alt="{{ product.apraksts }}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                    {% else %}
+                        <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="No image available" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                    {% endif %}
+                </div>
+                <div class="card-body d-flex flex-column">
+                    {# Product Details #}
+                    <h5 class="card-title fs-6">{{ product.apraksts|truncatewords:10 }}</h5>
+                    <p class="card-text text-muted small mb-1">Kods: {{ product.pasutijuma_kods }}</p> {# Code #}
+                    {% if product.ean13 %}
+                        <p class="card-text text-muted small mb-2">EAN: {{ product.ean13 }}</p>
+                    {% endif %}
+
+                    {# Price and Add to Cart Form - Aligned to bottom #}
+                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                        <span class="fw-bold fs-5">€{{ product.cena|floatformat:2 }}</span>
+                        {# Add to Cart Form #}
+                        <form action="{% url 'kvitsapp:cart_add' product.id %}" method="post">
+                            {% csrf_token %}
+                            {# Render the quantity field from the form added in the view #}
+                            {{ product.cart_add_form.quantity }}
+                            {{ product.cart_add_form.update }} {# Hidden field update=False #}
+                            {# {{ product.cart_add_form|crispy }} #} {# Alternative if using crispy #}
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"/>
+                                  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">Šajā kategorijā nav atrasts neviens produkts.</div> {# No products found in this category #}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

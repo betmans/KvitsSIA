@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %} {# Load crispy forms if you use it for the quantity update form #}
+
+{% block title %}Jūsu Iepirkumu Grozs{% endblock %} {# Your Shopping Cart #}
+
+{% block body %}
+<div class="container mt-4" style="color: black;"> {# Ensure text is visible #}
+    <h2 class="mb-4">Jūsu Iepirkumu Grozs</h2> {# Your Shopping Cart #}
+
+    {# Display messages (e.g., item removed/added) #}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if cart %} {# Check if the cart has items #}
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 15%;">Attēls</th> {# Image #}
+                        <th scope="col" style="width: 30%;">Produkts</th> {# Product #}
+                        <th scope="col" style="width: 20%;">Daudzums</th> {# Quantity #}
+                        <th scope="col" class="text-end" style="width: 15%;">Vienības Cena</th> {# Unit Price #}
+                        <th scope="col" class="text-end" style="width: 15%;">Kopā</th> {# Total #}
+                        <th scope="col" style="width: 5%;"></th> {# Remove button column #}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                        {% with product=item.product %} {# Get the product object #}
+                        <tr>
+                            <td>
+                                {# Display product image #}
+                                {% if product.attels %}
+                                    <img src="{% static product.attels %}" alt="{{ product.apraksts }}" class="img-thumbnail" style="max-height: 75px; max-width: 75px; object-fit: contain;">
+                                {% else %}
+                                    <img src="{% static 'images/no-image.png' %}" alt="No image" class="img-thumbnail" style="max-height: 75px; max-width: 75px; object-fit: contain;">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {# Product description and code #}
+                                {{ product.apraksts }}
+                                <small class="d-block text-muted">Kods: {{ product.pasutijuma_kods }}</small> {# Code #}
+                            </td>
+                            <td>
+                                {# Update Quantity Form #}
+                                <form action="{% url 'kvitsapp:cart_add' product.id %}" method="post" class="d-inline-flex align-items-center">
+                                    {% csrf_token %}
+                                    {# Use crispy or render manually #}
+                                    {{ item.update_quantity_form.quantity }}
+                                    {{ item.update_quantity_form.update }} {# Hidden field: update=True #}
+                                    {# {{ item.update_quantity_form|crispy }} #} {# Alternative if using crispy #}
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm ms-2">Atjaunināt</button> {# Update #}
+                                </form>
+                            </td>
+                            <td class="text-end">€{{ item.price|floatformat:2 }}</td> {# Unit Price #}
+                            <td class="text-end">€{{ item.total_price|floatformat:2 }}</td> {# Total Price for item #}
+                            <td>
+                                {# Remove Item Form #}
+                                <form action="{% url 'kvitsapp:cart_remove' product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                        </svg>
+                                    </button> {# Remove #}
+                                </form>
+                            </td>
+                        </tr>
+                        {% endwith %}
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end fw-bold">Kopsumma:</td> {# Subtotal #}
+                        <td class="text-end fw-bold">€{{ cart.get_total_price|floatformat:2 }}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'kvitsapp:index' %}" class="btn btn-outline-secondary">Turpināt Iepirkties</a> {# Continue Shopping #}
+            <a href="{% url 'kvitsapp:create_order' %}" class="btn btn-primary">Noformēt Pasūtījumu</a> {# Proceed to Checkout #}
+        </div>
+
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Jūsu iepirkumu grozs ir tukšs. {# Your shopping cart is empty. #}
+        </div>
+        <a href="{% url 'kvitsapp:index' %}" class="btn btn-primary">Sākt Iepirkties</a> {# Start Shopping #}
+    {% endif %}
+</div>
+{% endblock %}

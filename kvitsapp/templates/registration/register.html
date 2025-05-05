@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %} {# Load crispy_forms tags #}
+
+{% block title %}Reģistrēties{% endblock %}
+
+{% block body %}
+<div class="container mt-4" style="color: black;"> {# Added style for black text #}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">Izveidot jaunu kontu</h2> {# Create New Account #}
+
+            {# Display Django messages (e.g., success/error after form submission) #}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %} {# Security token #}
+
+                {# Display non-field errors and field errors if the form is invalid #}
+                {% if form.is_bound and not form.is_valid %}
+                    <div class="alert alert-danger">
+                        Lūdzu, izlabojiet kļūdas zemāk. {# Please correct the errors below. #}
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                {# Render the form using crispy_forms #}
+                {{ form|crispy }}
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">Reģistrēties</button> {# Register #}
+            </form>
+            <p class="mt-3 text-center">
+                Vai jau ir konts? <a href="{% url 'kvitsapp:login' %}">Pieslēgties šeit</a>. {# Already have an account? Login here. #}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

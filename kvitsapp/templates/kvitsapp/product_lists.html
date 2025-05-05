@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+
+
+    <div class="grid">
+        {% for product in products %}
+        <div class="product">
+            <img src="{% static product.attels %}" alt="Product image">
+            <h3>{{ product.pasutijuma_kods }}</h3>
+            <p>{{ product.apraksts }}</p>
+            <div class="price">{{ product.cena }} €</div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

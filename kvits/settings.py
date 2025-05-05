@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kvitsapp',  # Make sure this is here
+    'kvitsapp',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'django_browser_reload',
 ]
 MIDDLEWARE = [
@@ -58,10 +60,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'kvitsapp.context_processors.year', # custom context processor
+                'kvitsapp.context_processors.categories_processor', # custom context processor
+                'kvitsapp.context_processors.cart_processor',
             ],
         },
     },
@@ -157,3 +162,12 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
+LOGIN_REDIRECT_URL = 'kvitsapp:profile'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+COMPANY_ORDER_EMAIL = 'oskarsplotnieks@gmail.com' 

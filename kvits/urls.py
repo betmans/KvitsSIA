@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from kvitsapp.views import product_list
+# from kvitsapp.views import product_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('kvitsapp.urls')),  # Include your app's URLs here
-    path('', product_list, name='product_list'),
+    # path('', product_list, name='product_list'),
+    # path('products/<slug:slug>/', views.product_list_by_category, name='product_list_by_category'),
 ]
 #python manage.py runserver

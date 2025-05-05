@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Apstiprināt Profila Dzēšanu{% endblock %} {# Confirm Profile Deletion #}
+
+{% block body %}
+<div class="container mt-4" style="color: black;"> {# Added style for black text #}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Apstiprināt Profila Dzēšanu</h4> {# Confirm Profile Deletion #}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Vai tiešām vēlaties neatgriezeniski dzēst savu profilu un visus ar to saistītos datus?</p> {# Are you sure you want to permanently delete your profile and all associated data? #}
+                    <p class="text-danger fw-bold">Šī darbība nav atceļama!</p> {# This action cannot be undone! #}
+
+                    {# Form to submit the POST request for deletion #}
+                    <form method="post" action="{% url 'kvitsapp:delete_profile' %}">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="{% url 'kvitsapp:profile' %}" class="btn btn-secondary me-2">Atcelt</a> {# Cancel #}
+                            <button type="submit" class="btn btn-danger">Jā, Dzēst Manu Profilu</button> {# Yes, Delete My Profile #}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

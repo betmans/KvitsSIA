@@ -1,72 +1,120 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
+from django.contrib.auth import views as auth_views
 from . import views
 
 app_name = 'kvitsapp'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('products/<slug:slug>/', views.product_list_by_category, name='product_list_by_category'),
 
-    # Enges
-    path('enges/parastas.html', TemplateView.as_view(template_name="enges/parastas.html"), name='parastas'),
-    path('enges/vartu_enges.html', TemplateView.as_view(template_name="enges/vartu_enges.html"), name='vartu_enges'),
-    path('enges/metinamas.html', TemplateView.as_view(template_name="enges/metinamas.html"), name='metinamas'),
-    path('enges/t_veida.html', TemplateView.as_view(template_name="enges/t_veida.html"), name='t_veida'),
-
-    # Aizbidni krampji kronsteini
-    path('aizbidni_krampji_kronsteini/aizbidni.html', TemplateView.as_view(template_name="aizbidni_krampji_kronsteini/aizbidni.html"), name='aizbidni'),
-    path('aizbidni_krampji_kronsteini/krampji.html', TemplateView.as_view(template_name="aizbidni_krampji_kronsteini/krampji.html"), name='krampji'),
-    path('aizbidni_krampji_kronsteini/kronsteini.html', TemplateView.as_view(template_name="aizbidni_krampji_kronsteini/kronsteini.html"), name='kronsteini'),
-    path('aizbidni_krampji_kronsteini/vartu.html', TemplateView.as_view(template_name="aizbidni_krampji_kronsteini/vartu.html"), name='vartu'),
-
-    # Rokturi
-    path('rokturi/dalitajam_uzlikam.html', TemplateView.as_view(template_name="rokturi/dalitajam_uzlikam.html"), name='dalitajam_uzlikam'),
-    path('rokturi/garajam_uzlikam.html', TemplateView.as_view(template_name="rokturi/garajam_uzlikam.html"), name='garajam_uzlikam'),
-    path('rokturi/skandinavu_rokturi.html', TemplateView.as_view(template_name="rokturi/skandinavu_rokturi.html"), name='skandinavu_rokturi'),
-    path('rokturi/skavveida.html', TemplateView.as_view(template_name="rokturi/skavveida.html"), name='skavveida'),
-    path('rokturi/centra.html', TemplateView.as_view(template_name="rokturi/centra.html"), name='centra'),
-    path('rokturi/koka.html', TemplateView.as_view(template_name="rokturi/koka.html"), name='koka'),
-    path('rokturi/stieni.html', TemplateView.as_view(template_name="rokturi/stieni.html"), name='stieni'),
-
-    # Slēdzenes
-    path('sledzenes/vacu_standarta.html', TemplateView.as_view(template_name="sledzenes/vacu_standarta.html"), name='vacu_standarta'),
-    path('sledzenes/euro_standarta.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='euro_standarta'),
-    path('sledzenes/skandinavu_standarta.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='skandinavu_standarta'),
-    path('sledzenes/koda.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='koda'),
-    path('sledzenes/pretplaksnes.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='pretplaksnes'),
-    path('sledzenes/rulisu_mehanismi.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='rulisu_mehanismi'),
-    path('sledzenes/starpistabu.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='starpistabu'),
-    path('sledzenes/elbor.html', TemplateView.as_view(template_name="sledzenes/euro_standarta.html"), name='elbor'),
-
-    # Cilindri
-    path('cilindri/cilindri.html', TemplateView.as_view(template_name="cilindri/cilindri.html"), name='cilindri'),
-    path('cilindri/uzlikas.html', TemplateView.as_view(template_name="cilindri/uzlikas.html"), name='uzlikas'),
-    path('cilindri/wc.html', TemplateView.as_view(template_name="cilindri/wc.html"), name='wc'),
-    path('cilindri/skandinavu_cilindri.html', TemplateView.as_view(template_name="cilindri/skandinavu_cilindri.html"), name='skandinavu_cilindri'),
-
-    # Mēbeļu furnitūra
-    path('mebelu_furnitura/enges.html', TemplateView.as_view(template_name="mebelu_furnitura/enges.html"), name='enges'),
-    path('mebelu_furnitura/lodites.html', TemplateView.as_view(template_name="mebelu_furnitura/lodites.html"), name='lodites'),
-    path('mebelu_furnitura/magneti.html', TemplateView.as_view(template_name="mebelu_furnitura/magneti.html"), name='magneti'),
-    path('mebelu_furnitura/sledzenes.html', TemplateView.as_view(template_name="mebelu_furnitura/sledzenes.html"), name='sledzenes'),
-
-    # Aksesuāri
-    path('aksesuari/actinas.html', TemplateView.as_view(template_name="aksesuari/actinas.html"), name='actinas'),
-    path('aksesuari/aizvereji.html', TemplateView.as_view(template_name="aksesuari/aizvereji.html"), name='aizvereji'),
-    path('aksesuari/atdures.html', TemplateView.as_view(template_name="aksesuari/atdures.html"), name='atdures'),
-    path('aksesuari/atsperes.html', TemplateView.as_view(template_name="aksesuari/atsperes.html"), name='atsperes'),
-    path('aksesuari/pakaramie.html', TemplateView.as_view(template_name="aksesuari/pakaramie.html"), name='pakaramie'),
-    path('aksesuari/paslimejosie_numurini.html', TemplateView.as_view(template_name="aksesuari/paslimejosie_numurini.html"), name='paslimejosie_numurini'),
-
-    # Stiprinājumi
-    path('stiprinajumi/margu_balsti.html', TemplateView.as_view(template_name="stiprinajumi/margu_balsti.html"), name='margu_balsti'),
-    path('stiprinajumi/plauktu_lenki.html', TemplateView.as_view(template_name="stiprinajumi/plauktu_lenki.html"), name='plauktu_lenki'),
-
+    path('', views.index, name='index'),
+    # ****** ADDED SEARCH RESULTS URL ******
+    path('search/', views.search_results, name='search_results'),
+    # ****** END ADDED SEARCH RESULTS URL ******
+    path('products/<slug:slug>/', views.product_list_by_category, name='product_list_by_category'),
 
     # Par uzņēmumu
     path('par_uznemumu/vesture.html', TemplateView.as_view(template_name="par_uznemumu/vesture.html"), name='vesture'),
     path('par_uznemumu/kontakti.html', TemplateView.as_view(template_name="par_uznemumu/kontakti.html"), name='kontakti'),
     path('par_uznemumu/atrasanas_vieta.html', TemplateView.as_view(template_name="par_uznemumu/atrasanas_vieta.html"), name='atrasanas_vieta'),
     path('par_uznemumu/rekviziti.html', TemplateView.as_view(template_name="par_uznemumu/rekviziti.html"), name='rekviziti'),
-    path('products/', views.product_list, name='product_list'),  # Changed URL pattern
+
+
+
+
+    # ++++++++++ AUTHENTICATION AND PROFILE URLS ++++++++++
+
+    # Registration
+    path('register/', views.register, name='register'),
+
+    # Profile view/edit
+    path('profile/', views.profile, name='profile'),
+
+    # ****** ADDED PROFILE DELETE URL ******
+    path('profile/delete/', views.delete_profile, name='delete_profile'),
+    # ****** END ADDED PROFILE DELETE URL ******
+
+    # Login view (using Django's built-in view)
+    # You need to create the 'registration/login.html' template
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+
+    # Logout view (using Django's built-in view)
+    # Redirects to home page ('kvitsapp:index') after logout
+    path('logout/', auth_views.LogoutView.as_view(next_page='kvitsapp:index'), name='logout'),
+
+    # Password change views (using Django's built-in views)
+    # You need to create templates for these:
+    # 'registration/password_change_form.html'
+    # 'registration/password_change_done.html'
+    path('password_change/',
+         auth_views.PasswordChangeView.as_view(
+             template_name='registration/password_change_form.html',
+             success_url='/password_change/done/' # Redirect URL after successful change
+         ),
+         name='password_change'),
+    path('password_change/done/',
+         auth_views.PasswordChangeDoneView.as_view(
+             template_name='registration/password_change_done.html'
+         ),
+         name='password_change_done'),
+
+    # Password reset views (using Django's built-in views)
+    # You need to create templates for these:
+    # 'registration/password_reset_form.html'
+    # 'registration/password_reset_done.html'
+    # 'registration/password_reset_email.html' (Email content)
+    # 'registration/password_reset_confirm.html'
+    # 'registration/password_reset_complete.html'
+    path('password_reset/',
+         auth_views.PasswordResetView.as_view(
+             template_name='registration/password_reset_form.html',
+             email_template_name='registration/password_reset_email.html', # Email template
+             subject_template_name='registration/password_reset_subject.txt', # Email subject template
+             success_url='/password_reset/done/' # URL after submitting email
+         ),
+         name='password_reset'),
+    path('password_reset/done/',
+         auth_views.PasswordResetDoneView.as_view(
+             template_name='registration/password_reset_done.html'
+         ),
+         name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', # URL sent in the email
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='registration/password_reset_confirm.html',
+             success_url='/reset/done/' # URL after successfully setting new password
+         ),
+         name='password_reset_confirm'),
+    path('reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='registration/password_reset_complete.html'
+         ),
+         name='password_reset_complete'),
+
+    # Alternative using include for all auth views (simpler setup)
+    # path('accounts/', include('django.contrib.auth.urls')),
+    # If you use this, you don't need the individual login/logout/password paths above,
+    # but you still need to create all the corresponding templates in 'registration/'.
+    # Django looks for templates in 'registration/' folder by default for auth views.
+
+    # ++++++++++ END AUTHENTICATION AND PROFILE URLS ++++++++++
+
+
+
+
+     # ++++++++++ CART URLs ++++++++++
+    path('cart/', views.cart_detail, name='cart_detail'),
+    # URL for adding an item - expects product ID
+    path('cart/add/<int:product_id>/', views.cart_add, name='cart_add'),
+    # URL for removing an item - expects product ID
+    path('cart/remove/<int:product_id>/', views.cart_remove, name='cart_remove'),
+    # ++++++++++ END CART URLs ++++++++++
+
+    # ++++++++++ ORDER URL ++++++++++
+    path('order/create/', views.create_order, name='create_order'),
+    # ++++++++++ END ORDER URL ++++++++++
+
+
+    
 ]

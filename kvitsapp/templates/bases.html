@@ -7,33 +7,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {# Add Font Awesome for icons if desired #}
-    {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> #}
-    <style>
-        /* Optional: Adjust spacing for new auth links if needed */
-        .auth-links .nav-link, .auth-links .btn {
-            margin-left: 0.5rem; /* Add some space between auth links/buttons */
-        }
-    </style>
 </head>
 <body>
 
+  <!-- <svg width="16" height="16" class="me-1">
+    <use xlink:href="{% static 'icons/sprite.svg' %}#cart"></use>
+</svg> -->
+
   <div class="container-fluid mt-0">
     <header class="py-3 mb-4 border-bottom">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between mx-3">
-            {# Logo Column #}
-            <div class="col-md-2 mb-2 mb-md-0">
-                <a href="{% url 'kvitsapp:index' %}" class="d-inline-flex align-items-center link-body-emphasis text-decoration-none">
-                    {# Replace with your actual logo image or text #}
-                    <img src="{% static 'images/your-logo.png' %}" alt="KVITS Logo" height="40" class="me-2" style="filter: brightness(0) invert(1);"> {# Example Logo - adjust path and style #}
-                    <span class="fs-4" style="color: white;">KVITS</span> {# Site Name/Logo Text #}
-                </a>
+        <div class="row align-items-center mx-3">
+            <div class="col-auto">
+                <a href="{% url 'kvitsapp:index' %}" class="d-flex align-items-center link-body-emphasis text-decoration-none"> 
+                <span class="fs-4">LOGO</span>
+              </a>
             </div>
-
-            {# Navigation Links Column #}
-            <div class="col-md-6 mb-2 mb-md-0">
-              <ul class="nav nav-pills justify-content-center">
-                {# --- Category Dropdowns --- #}
+            <div class="col-8">
+              <ul class="nav nav-pills justify-content-end">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Enģes
@@ -50,10 +40,10 @@
                       {% endfor %}
                   </ul>
                 </li>
-
+            
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Aizbīdņi Kronšteini Krampji
+                      Aizbīdņi Kronšteini Krampji 
                   </a>
                   <ul class="dropdown-menu">
                       {% for category in categories %}
@@ -67,7 +57,7 @@
                       {% endfor %}
                   </ul>
                 </li>
-
+            
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Slēdzenes
@@ -169,70 +159,36 @@
                       {% endfor %}
                   </ul>
                 </li>
-                {# --- End Category Dropdowns --- #}
+                
               </ul>
             </div>
-
-            {# Search, Cart, and Auth Links Column #}
-            <div class="col-md-4 text-end d-flex align-items-center justify-content-end">
-                {# Search Form #}
-                <form class="me-2" action="{% url 'kvitsapp:search_results' %}" method="get" role="search">
-                  <input class="form-control form-control-sm" type="search" placeholder="Meklēt..." aria-label="Search" name="q" value="{{ request.GET.q }}"> {# Meklēt = Search #}
+            <div class="col">
+                <a href="/grozs" class="btn btn-primary">Grozs</a>
+                <form class="d-flex ms-2" action="{% url 'kvitsapp:search_results' %}" method="get">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                  <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
-
-                {# Cart Link/Button #}
-                <a href="{% url 'kvitsapp:cart_detail' %}" class="btn btn-outline-light btn-sm me-2 position-relative"> {# Added position-relative #}
-                    {# <i class="fas fa-shopping-cart"></i> #} Grozs {# Grozs = Cart #}
-                    {# Display cart item count if cart has items #}
-                    {% if cart|length > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {{ cart|length }}
-                            <span class="visually-hidden">items in cart</span>
-                        </span>
-                    {% endif %}
-                </a>
-
-                {# Authentication Links #}
-                <div class="auth-links">
-                    {% if user.is_authenticated %}
-                        {# If user is logged in #}
-                        <span class="text-white me-2">Sveiki, {{ user.username }}!</span> {# Sveiki = Hello #}
-                        <a href="{% url 'kvitsapp:profile' %}" class="btn btn-outline-light btn-sm">Profils</a> {# Profils = Profile #}
-                        {# Logout using a form for security (POST request) #}
-                        <form action="{% url 'kvitsapp:logout' %}" method="post" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-light btn-sm">Iziet</button> {# Iziet = Logout #}
-                        </form>
-                    {% else %}
-                        {# If user is not logged in #}
-                        <a href="{% url 'kvitsapp:login' %}" class="btn btn-outline-light btn-sm">Pieslēgties</a> {# Pieslēgties = Login #}
-                        <a href="{% url 'kvitsapp:register' %}" class="btn btn-light btn-sm">Reģistrēties</a> {# Reģistrēties = Register #}
-                    {% endif %}
-                </div>
+              </div>
             </div>
-        </div>
-    </header>
-</div> {# End container-fluid for header #}
-
-{# Main content block #}
-<div class="container my-4"> {# Add a container for the main body content #}
-    {% block body %}{% endblock %}
+          </div>
+        </header>
+    </div>
 </div>
-
-<div class="container"> {# Footer container #}
+{% block body %}{% endblock %}
+<!-- Kājene -->
+<div class="container">
     <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
       <div class="col mb-3">
         <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-          {# <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> #}
-          {# Consider adding logo here too if desired #}
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         </a>
         <p class="text-body-secondary">© {{gads}} KVITS SIA</p>
       </div>
-
+  
       <div class="col mb-3">
-        {# Empty column for spacing #}
+  
       </div>
-
+  
       <div class="col mb-3">
         <h5>Par uzņēmumu</h5>
         <ul class="nav flex-column">
@@ -242,15 +198,28 @@
           <li class="nav-item mb-2"><a href="{% url 'kvitsapp:rekviziti' %}" class="nav-link p-0 text-body-secondary">Rekvizīti</a></li>
         </ul>
       </div>
-
-      {# Add other footer sections if needed #}
-      {# <div class="col mb-3"> ... </div> #}
-      {# <div class="col mb-3"> ... </div> #}
-
+  
+      <!-- <div class="col mb-3">
+        <h5>Piegāde un maksājumi</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pasūtīšana</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Piegāde</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Apmaksa</a></li>
+        </ul>
+      </div>
+  
+      <div class="col mb-3">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+        </ul>
+      </div> -->
     </footer>
-</div> {# End footer container #}
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-{% block extra_js %}{% endblock %} {# Placeholder for page-specific JS #}
+  </dscript/div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %} {# Load crispy_forms tags #}
+
+{% block title %}Pieslēgties{% endblock %}
+
+{% block body %}
+<div class="container mt-4" style="color: black;"> {# Added style for black text #}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">Pieslēgties savam kontam</h2> {# Login to Your Account #}
+
+            {# Display form errors if login failed #}
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    Jūsu lietotājvārds un parole nesakrita. Lūdzu, mēģiniet vēlreiz. {# Your username and password didn't match. Please try again. #}
+                </div>
+            {% endif %}
+
+            {# Display message if redirected here after logout or password change #}
+             {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Jūsu kontam nav piekļuves šai lapai. Lai turpinātu,
+                lūdzu, pieslēdzieties ar kontu, kuram ir piekļuve.</p> {# Your account doesn't have access to this page... #}
+                {% else %}
+                <p>Lūdzu, pieslēdzieties, lai redzētu šo lapu.</p> {# Please login to see this page. #}
+                {% endif %}
+            {% endif %}
+
+            <form method="post" action="{% url 'kvitsapp:login' %}" novalidate>
+                {% csrf_token %}
+
+                {# Render the login form fields using crispy_forms #}
+                 {{ form|crispy }}
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">Pieslēgties</button> {# Login #}
+                <input type="hidden" name="next" value="{{ next }}"> {# Hidden field to redirect after login #}
+            </form>
+
+            <p class="mt-3 text-center">
+                <a href="{% url 'kvitsapp:password_reset' %}">Aizmirsāt paroli?</a> {# Forgot password? #}
+            </p>
+            <p class="text-center">
+                Nav konta? <a href="{% url 'kvitsapp:register' %}">Reģistrēties šeit</a>. {# No account? Register here. #}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

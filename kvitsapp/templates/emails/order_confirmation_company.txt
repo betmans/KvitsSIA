@@ -1,0 +1,27 @@
+    Saņemts jauns pasūtījums!
+    =========================
+
+    Pasūtījuma Nr.: {{ order.id }}
+    Izveidots: {{ order.created|date:"Y-m-d H:i" }}
+
+    Klienta Informācija:
+    --------------------
+    Vārds, Uzvārds: {{ order.first_name }} {{ order.last_name }}
+    E-pasts: {{ order.email }}
+    {% if order.phone_number %}Telefons: {{ order.phone_number }}{% endif %}
+    {% if order.company_name %}Uzņēmums: {{ order.company_name }}{% endif %}
+    Piegādes Adrese: {{ order.address }}
+    {% if order.user %}Lietotāja ID (ja reģistrēts): {{ order.user.id }} ({{ order.user.username }}){% endif %}
+
+    Pasūtītās Preces:
+    ------------------
+    {% for item in cart %}
+    * {{ item.product.pasutijuma_kods }} - {{ item.product.apraksts }} | Daudzums: {{ item.quantity }} | Cena: €{{ item.price|floatformat:2 }} | Kopā: €{{ item.total_price|floatformat:2 }}
+    {% endfor %}
+
+    ------------------
+    Kopsumma: €{{ cart.get_total_price|floatformat:2 }}
+    =========================
+
+    Lūdzu, apstrādājiet šo pasūtījumu.
+    

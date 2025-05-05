@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jauns Pasūtījums Nr. {{ order.id }}</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.5; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .total { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Saņemts jauns pasūtījums!</h1>
+    <p>Pasūtījuma Nr.: <strong>{{ order.id }}</strong></p>
+    <p>Izveidots: {{ order.created|date:"Y-m-d H:i" }}</p>
+
+    <h2>Klienta Informācija:</h2>
+    <ul>
+        <li><strong>Vārds, Uzvārds:</strong> {{ order.first_name }} {{ order.last_name }}</li>
+        <li><strong>E-pasts:</strong> {{ order.email }}</li>
+        {% if order.phone_number %}<li><strong>Telefons:</strong> {{ order.phone_number }}</li>{% endif %}
+        {% if order.company_name %}<li><strong>Uzņēmums:</strong> {{ order.company_name }}</li>{% endif %}
+        <li><strong>Piegādes Adrese:</strong> {{ order.address }}</li>
+        {% if order.user %}<li><strong>Lietotāja ID (ja reģistrēts):</strong> {{ order.user.id }} ({{ order.user.username }})</li>{% endif %}
+    </ul>
+
+    <h2>Pasūtītās Preces:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produkta Kods</th>
+                <th>Apraksts</th>
+                <th>Daudzums</th>
+                <th>Cena (gab.)</th>
+                <th>Kopā</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.product.pasutijuma_kods }}</td>
+                <td>{{ item.product.apraksts }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>€{{ item.price|floatformat:2 }}</td>
+                <td>€{{ item.total_price|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="total">Kopsumma:</td>
+                <td class="total">€{{ cart.get_total_price|floatformat:2 }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <p>Lūdzu, apstrādājiet šo pasūtījumu.</p>
+</body>
+</html>
