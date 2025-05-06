@@ -20,7 +20,8 @@ urlpatterns = [
     path('par_uznemumu/kontakti.html', TemplateView.as_view(template_name="par_uznemumu/kontakti.html"), name='kontakti'),
     path('par_uznemumu/atrasanas_vieta.html', TemplateView.as_view(template_name="par_uznemumu/atrasanas_vieta.html"), name='atrasanas_vieta'),
     path('par_uznemumu/rekviziti.html', TemplateView.as_view(template_name="par_uznemumu/rekviziti.html"), name='rekviziti'),
-
+    path('par_uznemumu/piegade_sanemsana.html', TemplateView.as_view(template_name="par_uznemumu/piegade_sanemsana.html"), name='piegade_sanemsana'),
+    path('par_uznemumu/privatuma_politika.html', TemplateView.as_view(template_name="par_uznemumu/privatuma_politika.html"), name='privatuma_politika'),
 
 
 
