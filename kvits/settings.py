@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'kvits.wsgi.application'
 #     }
 
 import os
-
+# import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -171,3 +171,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 COMPANY_ORDER_EMAIL = 'oskarsplotnieks@gmail.com' 
+
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1').split(' ')
+# In Render, set DJANGO_ALLOWED_HOSTS to "your-app-name.onrender.com yourcustomdomain.com"

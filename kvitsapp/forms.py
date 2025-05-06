@@ -5,6 +5,24 @@ from django.contrib.auth.models import User # Import the standard User model
 # Import your models needed for forms
 from .models import Profile, Order
 
+# ++++++++++ CART ADD PRODUCT FORM ++++++++++
+# Moved here from views.py
+class CartAddProductForm(forms.Form):
+    """Form for adding products to the cart or updating quantity."""
+    # Allow specifying quantity, default to 1
+    quantity = forms.IntegerField(
+        min_value=1,
+        initial=1,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control form-control-sm text-center', # Added text-center
+            'style': 'width: 65px; display: inline-block;' # Slightly wider
+        })
+    )
+    # Hidden field to indicate if the quantity should replace the existing one or add to it
+    update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
+# ++++++++++ END CART ADD PRODUCT FORM ++++++++++
+
+
 class UserRegistrationForm(UserCreationForm):
     """
     Form for registering new users. Inherits from Django's UserCreationForm
@@ -49,7 +67,6 @@ class ProfileUpdateForm(forms.ModelForm):
         # Or explicitly list fields:
         # fields = ['company_name', 'registration_number', 'vat_number', 'address', 'phone_number']
 
-# ++++++++++ MOVED ORDER CREATE FORM HERE ++++++++++
 class OrderCreateForm(forms.ModelForm):
     """
     Form for collecting customer details during checkout.
@@ -67,11 +84,3 @@ class OrderCreateForm(forms.ModelForm):
             'company_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Uzņēmuma nosaukums (nav obligāts)'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Iela, māja/dzīvoklis, pilsēta, pasta indekss'}),
         }
-        # Optional: Add labels if needed (Bootstrap often uses placeholders)
-        # labels = {
-        #     'first_name': 'Vārds',
-        #     'last_name': 'Uzvārds',
-        #     # ...
-        # }
-# ++++++++++ END MOVED ORDER CREATE FORM ++++++++++
-
