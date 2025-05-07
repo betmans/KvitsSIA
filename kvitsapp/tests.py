@@ -314,3 +314,4 @@ class CartClassTest(TestCase):
         # but the session itself should be cleared. A new Cart(request) would be empty.
 
 
+#python manage.py test kvitsapp

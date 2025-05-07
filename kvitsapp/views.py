@@ -290,3 +290,6 @@ def create_order(request):
     return render(request, 'orders/create_order.html', {'cart': cart, 'form': form})
 
 
+#python manage.py test kvitsapp
+
+

@@ -91,29 +91,24 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 # RUN pip install --user --upgrade pip && pip install --user -r requirements.txt
 
 
+# Restarts konteinerus
+# docker-compose restart
 
-
-
-
+# Visu novāc
 # docker-compose down
-# docker-compose up --build
 
-#docker-compose restart
-
-# # Stop everything
-# docker-compose down -v
-
-# # Clean Docker system
+# Visus failus izdzēš
 # docker system prune -a --volumes
 
-# # Rebuild and start
-# docker-compose up --build -d
+# Uzbūve no jauna
+# docker-compose up --build
 
-# # Run migrations
+# Jaunās lietas migrē
 # docker-compose exec web python manage.py migrate
 
-# # Create superuser
+# Super admina izveide
 # docker-compose exec web python manage.py createsuperuser
 
-# # Import products
+# Importorte katalogu
 # docker-compose exec web python manage.py import_products
+

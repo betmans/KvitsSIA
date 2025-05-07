@@ -107,10 +107,19 @@ DATABASES = {
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
         'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
         'PORT': os.environ.get('DATABASE_PORT', '5432'),
+    },
+    'TEST': {  # Add this
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DATABASE_TEST_NAME', 'test_postgres'),  # Or another test db name
+        'USER': os.environ.get('DATABASE_TEST_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DATABASE_TEST_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('DATABASE_TEST_HOST', 'localhost'),
+        'PORT': os.environ.get('DATABASE_TEST_PORT', '5432'),
     }
 }
-
-
+import sys
+if 'test' in sys.argv:
+    DATABASES['default'] = DATABASES['TEST']
 
 
 
