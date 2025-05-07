@@ -27,27 +27,3 @@ RUN chmod -R 755 kvitsapp/static/images
 
 # Run server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-# Restartē konteinerus
-# docker-compose restart
-
-# Visu novāc
-# docker-compose down
-
-# Visus failus izdzēš
-# docker system prune -a --volumes
-
-# Uzbūve no jauna
-# docker-compose up --build
-
-# Jaunās lietas migrē uz esošo dockeri
-# docker-compose exec web python manage.py migrate
-
-# Super admina izveide
-# docker-compose exec web python manage.py createsuperuser
-
-# Importē produktu katalogu
-# docker-compose exec web python manage.py import_products
-
-# Jāieliek pārlūkprogrammā lai apskatītu vietni
-# http://localhost:8000/
