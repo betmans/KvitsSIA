@@ -1,9 +1,9 @@
-Branch, kas domāts lai skatītu lokāri datorā ar Docker ir izrādes main in priekš render.
+Zars (branch), kas domāts, lai skatītu vietni lokāli datorā ar Docker, ir izstrādes zars. Savukārt main zars ir paredzēts vietnes atrašanās internetā ar Render.
 
+Lai palaistu vietni lokāli, datorā ir jābūt instalētai un fonā palaistai Docker Desktop programmai.
+Komandas, kas jāpalaiž terminālī, lai vietne būtu skatāma lokāli:
 
-Lai palasitu lokāli darbu jābūt instelētai un palaistā fonā Docker desktop programmai.
-Komandas, kas jāpalaiž termināli lai vietne būtu skatāma lokāli.
-Lai uzbūvētu docker containeru:
+Lai uzbūvētu Docker konteineri:
 docker compose build
 
 Lai palaistu konteinerus:
@@ -12,25 +12,23 @@ docker compose up
 Lai izveidotu datubāzes shēmas un modeļus:
 docker compose exec web python manage.py migrate
 
-Lai importētu produktu katalogu no excel faila:
+Lai importētu produktu katalogu no Excel faila:
 docker-compose exec web python manage.py import_products
 
-Jāieliek pārlūkprogrammā lai apskatītu vietni:
+Lai apskatītu vietni, pārlūkprogrammā jāievada:
 http://localhost:8000/
 
 
-Komandas, kas noder:
+Noderīgas komandas:
+
 Restartē konteinerus:
 docker-compose restart
 
-Novāc konteinerus:
+Aptur un noņem konteinerus:
 docker-compose down
 
-Idzēš pilnīgi visu izveidoto Docker:
+Izdzēš pilnīgi visu Docker izveidoto (konteinerus, attēlus, tīklus un volumes):
 #docker system prune -a --volumes
 
-Super admina izveide priekš admin paneļa lietošanas:
+Superadministratora izveide admin paneļa lietošanai:
 docker-compose exec web python manage.py createsuperuser
-
-
-
