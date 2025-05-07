@@ -25,10 +25,8 @@ def categories_processor(request):
     categories = Category.objects.all()
     return {'categories': categories, 'category_groups': category_groups}
 
-# ++++++++++ CART CONTEXT PROCESSOR ++++++++++
 def cart_processor(request):
-    """Adds the cart object to the context."""
-    # Access the Cart class through the imported module
-    return {'cart': cart_module.Cart(request)}
-# ++++++++++ END CART CONTEXT PROCESSOR ++++++++++
+    cart = cart_module.Cart(request) # MUST pass request
+    return {'cart': cart}
+
 

@@ -16,12 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from kvitsapp.views import product_list
+from django.conf import settings  # Import settings
+from django.conf.urls.static import static # Import static if you need to serve media files in dev
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('kvitsapp.urls')),  # Include your app's URLs here
+    path('accounts/', include('django.contrib.auth.urls')), # <<< ADD THIS LINE
     # path('', product_list, name='product_list'),
     # path('products/<slug:slug>/', views.product_list_by_category, name='product_list_by_category'),
 ]
 #python manage.py runserver
+
+if settings.DEBUG:
+    urlpatterns += [
+        path("__reload__/", include("django_browser_reload.urls")),
+    ]
