@@ -1,5 +1,3 @@
-# docker-compose.yml (Simplified for Local Docker - Using individual DB vars)
-
 services:
   web:
     build: .
@@ -41,3 +39,27 @@ services:
 
 volumes:
   postgres_data:
+
+# Restartē konteinerus
+# docker-compose restart
+
+# Visu novāc
+# docker-compose down
+
+# Visus failus izdzēš
+# docker system prune -a --volumes
+
+# Uzbūve no jauna
+# docker-compose up --build
+
+# Jaunās lietas migrē uz esošo dockeri
+# docker-compose exec web python manage.py migrate
+
+# Super admina izveide
+# docker-compose exec web python manage.py createsuperuser
+
+# Importorte katalogu
+# docker-compose exec web python manage.py import_products
+
+# Jāieliek pārlūkprogrammā lai apskatītu vietni
+# http://localhost:8000/

@@ -9,6 +9,6 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 # Populate products (TEMPORARY - REMOVE AFTER FIRST SUCCESSFUL IMPORT)
-echo "Attempting to import products..."
-python manage.py import_products 
-echo "Product import command finished."
+# echo "Attempting to import products..."
+# python manage.py import_products 
+# echo "Product import command finished."

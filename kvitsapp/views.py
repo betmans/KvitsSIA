@@ -1,8 +1,6 @@
-# kvitsapp/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
 from datetime import datetime
-# Import models
 from .models import Category, Product, Profile, Order, OrderItem
 from django.conf import settings
 from django.template.loader import get_template, render_to_string
@@ -13,12 +11,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
-# Import forms (OrderCreateForm is now correctly in forms.py)
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, OrderCreateForm
-# Import Cart logic
 from .cart import Cart
 from django import forms
-# Import for email sending
 from django.core.mail import send_mail
 from django.urls import reverse
 
@@ -28,9 +23,6 @@ from django.urls import reverse
 class CartAddProductForm(forms.Form):
     quantity = forms.IntegerField(min_value=1, initial=1, widget=forms.NumberInput(attrs={'class': 'form-control form-control-sm', 'style': 'width: 60px; display: inline-block;'}))
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
-
-# --- OrderCreateForm definition is NOT here anymore ---
-
 
 # ++++++++++ EXISTING VIEWS (Index, Category, Search) ++++++++++
 def index(request):
@@ -289,7 +281,5 @@ def create_order(request):
     # Render the checkout page template
     return render(request, 'orders/create_order.html', {'cart': cart, 'form': form})
 
-
-#python manage.py test kvitsapp
 
 

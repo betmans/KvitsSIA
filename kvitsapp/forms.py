@@ -1,12 +1,9 @@
-# kvitsapp/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.models import User # Import the standard User model
-# Import your models needed for forms
+from django.contrib.auth.models import User
 from .models import Profile, Order
 
 # ++++++++++ CART ADD PRODUCT FORM ++++++++++
-# Moved here from views.py
 class CartAddProductForm(forms.Form):
     """Form for adding products to the cart or updating quantity."""
     # Allow specifying quantity, default to 1

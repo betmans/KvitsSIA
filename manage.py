@@ -20,6 +20,9 @@ def main():
 
 if __name__ == '__main__':
     main()
-#cd framework
+#Vecā palaišana bez dockera
+#cd KVITS.LV
 #python manage.py runserver
+
+#Jāieliek pārlūkprogrammā lai apskatītu vietni
 #http://localhost:8000/

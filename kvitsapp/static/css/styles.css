@@ -33,14 +33,12 @@ footer {
     color:rgb(0, 0, 0);
 }
 
-
 .dropdown-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Optional: Padding inside LV link */
 .dropdown-wrapper .nav-link {
     padding: 10px 15px;
 }
@@ -54,16 +52,14 @@ footer {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-  }
+}
   
 .column {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-  }
-
-  
+}
 
 .search-wrapper {
     display: flex;
@@ -83,7 +79,6 @@ footer {
     align-items: center;
     gap: 8px; /* 👈 Space between icon and text */
 }
-
 
 .icon {
     width: 20px;
@@ -118,6 +113,7 @@ footer {
     border-right: none;
     outline: none;
 }
+
 .search-wrapper button {
     background: #ececec;
     border: 2px solid #ccc;
@@ -130,18 +126,16 @@ footer {
     justify-content: center;
     transition: background 0.3s ease;
 }
+
 .search-wrapper button svg {
     width: 20px;
     height: 20px;
     fill: rgb(0, 0, 0);
 }
+
 .search-wrapper button:hover {
     background: #bebebe;
 }
-
-/* .fs-4{
-    color:rgb(226, 16, 16);
-} */
 
 .nav-link.dropdown-toggle {
     color: white;
@@ -156,32 +150,22 @@ footer {
     color:black;
 }
 
-
-  
-
-/* .fs-4{
-    color:rgb(226, 16, 16);
-} */
-
 .nav-link.dropdown-toggle{
     color: white; /* Set dropdown toggle text to white */
 
 }
-
 
 .carousel-item img {
     max-height: 400px; /* Adjust to desired height */
     object-fit: cover; /* Keeps the image aspect ratio */
 }
 
-
-
-
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.5rem;
 }
+
 .product {
     background: rgb(255, 255, 255);
     padding: 1rem;
@@ -192,11 +176,13 @@ footer {
 
     
 }
+
 .product img {
     max-width: 100%;
     max-height: 150px;
     object-fit: contain;
 }
+
 .price {
     margin-top: 0.5rem;
     font-weight: bold;

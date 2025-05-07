@@ -1,7 +1,5 @@
-# kvitsapp/context_processors.py
 from datetime import datetime
 from .models import Category
-# Try importing the cart module directly first
 from . import cart as cart_module
 
 def year(request):
@@ -28,5 +26,3 @@ def categories_processor(request):
 def cart_processor(request):
     cart = cart_module.Cart(request) # MUST pass request
     return {'cart': cart}
-
-

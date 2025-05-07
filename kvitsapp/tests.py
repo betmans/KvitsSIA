@@ -1,4 +1,6 @@
-# kvitsapp/tests.py
+#Komanda lai palaistu
+#docker-compose exec web python manage.py test kvitsapp
+
 from django.test import TestCase, Client # Import Client for view testing
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -244,8 +246,3 @@ class OrderCreateFormTest(TestCase):
         form = OrderCreateForm(data=data)
         self.assertFalse(form.is_valid())
         self.assertIn('email', form.errors)
-
-
-
-#python manage.py test kvitsapp
-#docker-compose exec web python manage.py test kvitsapp

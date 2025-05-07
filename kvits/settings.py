@@ -1,5 +1,3 @@
-# settings.py (Simplified for Local Docker Development - Using individual DB vars)
-
 import os
 from pathlib import Path
 
