@@ -13,3 +13,7 @@ django-crispy-forms>=2.0 # Or specific version
 crispy-bootstrap5>=0.7 # Or specific version
 dj-database-url>=0.5.0 # Or specific version
 psycopg2-binary>=2.9.6 # Or specific version
+gunicorn
+whitenoise
+python-dotenv
+dj_database_url
