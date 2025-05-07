@@ -32,3 +32,26 @@ Izdzēš pilnīgi visu Docker izveidoto (konteinerus, attēlus, tīklus un volum
 
 Superadministratora izveide admin paneļa lietošanai:
 docker-compose exec web python manage.py createsuperuser
+
+
+Datubāzei:
+
+Izdzēst datus datubāzē:
+docker-compose exec web python manage.py flush
+
+Lai apskatītu datubāzi jāieliek šīs kommandas termināli pēc kārtas:
+docker-compose exec web bash
+
+    Vienreiž jāpalaiž lai būtu pieejams psql:
+    apt-get update
+    apt-get install -y postgresql-client
+
+psql -h db -U postgres
+
+postgres
+
+SELECT * FROM kvitsapp_product;
+
+
+Lai izietu no psql:
+\q
