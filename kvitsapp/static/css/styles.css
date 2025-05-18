@@ -1,3 +1,71 @@
+/* === Option 1: Light & Clean Cookie Consent Banner === */
+#cookieConsentBanner {
+    display: none; /* Initially hidden, JS changes to 'flex' */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Light grey background */
+    color: #212529; /* Dark text for readability */
+    padding: 15px 20px;
+    z-index: 1050;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Subtle shadow at the top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 1px solid #dee2e6; /* Light border */
+}
+
+#cookieConsentBanner p {
+    margin: 0 0 10px 0;
+    flex-grow: 1;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+#cookieConsentBanner .buttons-container {
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+#cookieConsentBanner a {
+    color: #007bff; /* Standard blue link, or use your header red: #dc3545 */
+    text-decoration: underline;
+}
+
+#cookieConsentBanner a:hover {
+    color: #0056b3; /* Darker blue on hover, or a darker red */
+}
+
+#cookieConsentBanner .btn {
+    margin-left: 10px;
+}
+
+/* "Sapratu" button using website's red */
+#cookieConsentBanner #acceptCookies.btn-primary {
+    background-color: #dc3545; /* Header red */
+    border-color: #dc3545;
+    color: #fff;
+}
+#cookieConsentBanner #acceptCookies.btn-primary:hover {
+    background-color: #c82333; /* Darker red */
+    border-color: #bd2130;
+}
+
+/* "Atteikties" button */
+#cookieConsentBanner #declineCookies.btn-outline-secondary {
+    color: #6c757d; /* Standard secondary color */
+    border-color: #6c757d;
+}
+#cookieConsentBanner #declineCookies.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+
+
+
 body {
     color: white;
     font-family: "DM Sans", sans-serif;
@@ -188,3 +256,4 @@ footer {
     font-weight: bold;
     color: #000000;
 }
+

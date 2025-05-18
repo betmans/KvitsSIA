@@ -261,8 +261,21 @@
       </div>
     </footer>
 
+    <div id="cookieConsentOverlay"></div> 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-{% block extra_js %}{% endblock %}
+    <div id="cookieConsentBanner">
+        <p>Šajā lapā tiek izmantotas sīkdatnes. <a href="{% url 'kvitsapp:privatuma_politika' %}">Uzziniet vairāk</a> un iespējas pielāgot šeit.</p>
+        <div class="buttons-container">
+            <button id="declineCookies" class="btn btn-outline-secondary btn-sm me-2">Noraidīt</button>
+            <button id="acceptCookies" class="btn btn-primary btn-sm">Piekrītu</button>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {% block extra_js %}
+        <script src="{% static 'js/cookieConsent.js' %}"></script>
+    {% endblock %}
+
 </body>
 </html>

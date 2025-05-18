@@ -16,6 +16,7 @@ from .cart import Cart
 from django import forms
 from django.core.mail import send_mail
 from django.urls import reverse
+from django.http import HttpResponse
 
 
 # ++++++++++ CART ADD PRODUCT FORM ++++++++++
@@ -283,3 +284,17 @@ def create_order(request):
 
 
 
+
+def set_preference_cookie(request):
+    response = HttpResponse("Preference saved")
+    if request.POST.get('preference_accepted'): # Example: user accepted a preference
+        # Only set if consent for this type of cookie is given
+        if request.COOKIES.get('cookie_consent') == 'accepted' or localStorage.getItem('cookieConsent') == 'accepted': # Check consent
+            response.set_cookie('user_preference', 'dark_mode', max_age=365 * 24 * 60 * 60) # max_age is in seconds (1 year)
+    return response
+
+# # In a relevant view in kvitsapp/views.py
+# def my_view(request):
+#     user_preference = request.COOKIES.get('user_preference', 'light_mode') # Get cookie, with a default
+#     # ... use user_preference
+#     return render(request, 'some_template.html', {'preference': user_preference})
