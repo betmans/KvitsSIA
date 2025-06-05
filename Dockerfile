@@ -29,7 +29,8 @@ COPY . /app/
 # Collect static files using your main settings file
 # Ensure STATIC_ROOT is correctly defined in kvits/settings.py
 # This assumes manage.py is now at /app/manage.py
-RUN python manage.py collectstatic --noinput --settings=kvits.settings
+# Temporarily set DJANGO_DEBUG=True for collectstatic to avoid needing DATABASE_URL during build
+RUN DJANGO_DEBUG=True python manage.py collectstatic --noinput --settings=kvits.settings
 # The DJANGO_SETTINGS_MODULE will be set in the final stage for runtime.
 
 # -----------------------------------------------------------------------------
