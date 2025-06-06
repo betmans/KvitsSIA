@@ -105,23 +105,10 @@ WSGI_APPLICATION = 'kvits.wsgi.application' # Make sure 'kvits' is your project 
 # postgresql://USER:PASSWORD@/DATABASE_NAME?host=/cloudsql/PROJECT_ID:REGION:INSTANCE_NAME
 # Or Cloud Run might set it up for you if you use the console to link the SQL instance.
 
-# +++++ DEBUGGING ENVIRONMENT VARIABLES +++++
-print("--- DEBUGGING ENVIRONMENT VARIABLES ---")
-print(f"DJANGO_DEBUG from env: {os.environ.get('DJANGO_DEBUG')}")
-print(f"Python DEBUG variable is: {DEBUG}")
-print(f"DATABASE_URL from env: {os.environ.get('DATABASE_URL')}")
-# You can print all env vars if needed, but it will be very verbose:
-# import json
-# print(f"All environment variables: {json.dumps(dict(os.environ), indent=2)}")
-print("--- END DEBUGGING ---")
-# +++++++++++++++++++++++++++++++++++++++++++
-
 DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL: # Provided by Cloud Run (often when connected to Cloud SQL) or set manually
-    print("Using DATABASE_URL for database configuration.") # Added print
     DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=os.environ.get('DB_SSL_REQUIRE', 'False') == 'True')}
 elif DEBUG: # Fallback for local Docker development if DATABASE_URL is not set
-    print("DATABASE_URL not found, DEBUG is True. Using local dev DB settings.") # Added print
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -133,7 +120,6 @@ elif DEBUG: # Fallback for local Docker development if DATABASE_URL is not set
         }
     }
 else: # Production environment but DATABASE_URL is not set - this is an error condition
-    print("DATABASE_URL not found, DEBUG is False. Raising EnvironmentError.") # Added print
     raise EnvironmentError("DATABASE_URL environment variable not set for production.")
 
 
