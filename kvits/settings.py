@@ -106,22 +106,20 @@ WSGI_APPLICATION = 'kvits.wsgi.application' # Make sure 'kvits' is your project 
 # Or Cloud Run might set it up for you if you use the console to link the SQL instance.
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL: # Provided by Cloud Run (often when connected to Cloud SQL) or set manually
-    DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=os.environ.get('DB_SSL_REQUIRE', 'False') == 'True')}
-elif DEBUG: # Fallback for local Docker development if DATABASE_URL is not set
+if DATABASE_URL: # This will be used by Google Cloud or other services that provide it
+    DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
+else: # Fallback for cPanel or local dev where DATABASE_URL is not set
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DATABASE_NAME_LOCAL', 'postgres'),
-            'USER': os.environ.get('DATABASE_USER_LOCAL', 'postgres'),
-            'PASSWORD': os.environ.get('DATABASE_PASSWORD_LOCAL', 'postgres'),
-            'HOST': os.environ.get('DATABASE_HOST_LOCAL', 'db'), # Your Docker Compose service name
-            'PORT': os.environ.get('DATABASE_PORT_LOCAL', '5432'),
+            # Change ENGINE based on your cPanel database
+            'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.mysql'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST', 'localhost'), # Usually 'localhost' on cPanel
+            'PORT': os.environ.get('DB_PORT', '3306'),      # Default for MySQL
         }
     }
-else: # Production environment but DATABASE_URL is not set - this is an error condition
-    raise EnvironmentError("DATABASE_URL environment variable not set for production.")
-
 
 # --- Password Validation ---
 AUTH_PASSWORD_VALIDATORS = [
@@ -146,6 +144,12 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+# --- Media Files (User Uploads) ---
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media' # This creates a 'media' folder in your project root
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # --- Google Cloud Storage for Static and Media Files (using django-storages) ---
 GCS_BUCKET_NAME = os.environ.get('GCS_BUCKET_NAME')
